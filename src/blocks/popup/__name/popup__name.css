@@ -1,0 +1,29 @@
+.popup__name {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 35px;
+  padding: 0;
+  padding-bottom: 9px;
+  width: 358px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.popup__name:nth-of-type(2n+2){
+  margin-bottom: 0;
+}
+@media (max-width: 905px)  {
+  .popup__name {
+    width: 238px;
+    margin-bottom: 29px;
+    padding-bottom: 10px;
+  }
+}
+
+.popup__name_error {
+  border-bottom: 1px solid red;
+}

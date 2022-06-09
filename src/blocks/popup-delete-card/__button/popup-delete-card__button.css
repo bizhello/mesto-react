@@ -1,0 +1,18 @@
+.popup-delete-card__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 358px;
+    margin-top: 38px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media (max-width: 905px) {
+    .popup-delete-card__button{
+        width: 236px;
+
+    }
+}

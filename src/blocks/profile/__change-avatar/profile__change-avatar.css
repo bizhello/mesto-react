@@ -1,0 +1,15 @@
+.profile__change-avatar {
+    display: none;
+    position: absolute;
+    left: 45px;
+    top: 45px;
+    margin: 0;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+    background: url('../../../images/change-avatar.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+

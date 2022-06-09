@@ -1,0 +1,12 @@
+.profile__box-avatar:hover {
+    cursor: pointer;
+    position: relative;
+}
+
+@media (max-width: 905px) {
+    .profile__box-avatar {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+}

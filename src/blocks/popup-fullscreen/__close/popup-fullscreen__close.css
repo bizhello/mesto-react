@@ -1,0 +1,28 @@
+.popup-fullscreen__close {
+  display: block;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: calc(100% + 8px);
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  background: url('../../../images/close-Icon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  transition: opacity 0.2s;
+}
+.popup-fullscreen__close:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+@media (max-width: 905px)  {
+  .popup-fullscreen__close {
+    width: 20px;
+    height: 20px;
+    bottom: calc(100% + 20px);
+    left: calc(100% - 20px);
+    background: url('../../../images/close-Icon-mobile.svg');
+  }
+}

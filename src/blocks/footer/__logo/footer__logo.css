@@ -1,0 +1,16 @@
+.footer__logo {
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+}
+@media (max-width: 905px)  {
+  .footer__logo {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

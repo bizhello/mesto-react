@@ -1,0 +1,23 @@
+.error {
+    display: block;
+    width: 358px;
+    position: absolute;
+    left: 36px;
+    top: 32px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+
+}
+@media (max-width: 905px) {
+    .error {
+        width: 238px;
+        left: 21px;
+    }
+}
+.popup-name-error, .popup-status-error{
+    border-top: 1px solid red;
+}
