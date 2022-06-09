@@ -55,7 +55,7 @@ function Main(props) {
                 <button className="profile__button" type="button" onClick={props.onAddPlace}></button>
             </section>
             <section className="elements">
-                {cards.map((card) => <Card likes={card.likes} name={card.name} src={card.src} id={card.id} onClick={props.onCardClick} />)}
+                {cards.map((card) => (<Card likes={card.likes} name={card.name} src={card.src} id={card.id} onClick={props.onCardClick} key={props.id}/>))}
             </section>
         </main>
     );

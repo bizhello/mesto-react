@@ -5,7 +5,7 @@ function Card(props) {
     }
 
     return(
-            <article className="element" key={props.id}>
+            <article className="element">
                 <button className="element__trash" type="button"></button>
                 <img className="element__photo"
                      src={props.src} alt="фото" onClick={handleClick} />
