@@ -41,7 +41,6 @@ function App() {
           <Footer />
 
           <PopupWithForm name={`profile`} title={`Редактировать профиль`} isOpen={editProfile} onClose={closeAllPopups} buttonText='Cохранить'>
-              <>
                   <label className="popup__input-container">
                     <input className="popup__name popup-profile__name" id="popup-name"
                            name="popup-name" type="text" minLength="2"
@@ -54,11 +53,9 @@ function App() {
                            placeholder="Введите стасус" required />
                     <span className="error" id="popup-status-error"></span>
                   </label>
-              </>
           </PopupWithForm>
 
           <PopupWithForm name={`add-element`} title={`Новое место`} isOpen={addPlace} onClose={closeAllPopups} buttonText='Cохранить' >
-              <>
                   <div className="popup__input-container">
                     <input className="popup__name popup-add-element__name" id="popup-add-element-name"
                            name="popup-add-element-name" placeholder="Название" type="text" minLength="2" maxLength="30"
@@ -70,7 +67,6 @@ function App() {
                            name="popup-add-element-src" placeholder="Ссылка на картинку" type="url" required />
                     <span className="error" id="popup-add-element-src-error"></span>
                   </div>
-              </>
           </PopupWithForm>
 
           <PopupWithForm name={`edit-avatar`} title={`Обновить аватар`} isOpen={editAvatar} onClose={closeAllPopups} buttonText='Cохранить' >
