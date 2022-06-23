@@ -20,7 +20,6 @@ function App() {
   const [cards, setCards] = useState([]);
   const emptyArr = [];
 
-
   const handleEditAvatarClick = () => {
     setEditAvatar(true);
   }

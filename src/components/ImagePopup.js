@@ -1,4 +1,5 @@
 function ImagePopup(props) {
+
     return (
         <div className={props.card ? `popup popup-fullscreen popup_opened` : `popup popup-fullscreen`}>
             <div className="popup-fullscreen__page">

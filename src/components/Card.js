@@ -1,7 +1,6 @@
 import {CurrentUserContext} from "../contexts/CurrentUserContext";
 import React from 'react';
 
-
 function Card(props) {
     const currentUser = React.useContext(CurrentUserContext);
     const isOwn = props.owner === currentUser._id;
@@ -19,7 +18,6 @@ function Card(props) {
     function handleLikeClick() {
         props.onCardLike(props.card);
     }
-
     function handleClick() {
         props.onClick(props.link);
     }
