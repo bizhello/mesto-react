@@ -1,9 +1,9 @@
 import PopupWithForm from "./PopupWithForm";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {CurrentUserContext} from "../contexts/CurrentUserContext";
 import React from 'react';
 
-export function EditProfilePopup(props) {
+export function EditProfilePopup({isOpen, onClose,onUpdateUser}) {
     const currentUser = React.useContext(CurrentUserContext);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -16,27 +16,27 @@ export function EditProfilePopup(props) {
     }
     function handleSubmit(e) {
         e.preventDefault();
-        props.onUpdateUser(name, description);
-        props.onClose();
+        onUpdateUser(name, description);
+        onClose();
     }
 
     React.useEffect(() => {
         setName(currentUser.name);
         setDescription(currentUser.about);
-    }, [currentUser]);
+    }, [currentUser,isOpen]);
 
     return(
-        <PopupWithForm name={`profile`} title={`Редактировать профиль`} isOpen={props.isOpen} onClose={props.onClose} buttonText='Cохранить' onSubmit={handleSubmit}>
+        <PopupWithForm name={`profile`} title={`Редактировать профиль`} isOpen={isOpen} onClose={onClose} buttonText='Cохранить' onSubmit={handleSubmit}>
             <label className="popup__input-container">
                 <input className="popup__name popup-profile__name" id="popup-name"
                        name="popup-name" type="text" minLength="2"
-                       maxLength="40" autoComplete="off" placeholder="Введите имя" required onChange={handleChangeName} value={name}/>
+                       maxLength="40" autoComplete="off" placeholder="Введите имя" required onChange={handleChangeName} value={name ?? ""}/>
                 <span className="error" id="popup-name-error"></span>
             </label>
             <label className="popup__input-container">
                 <input className="popup__name popup-profile__name" id="popup-status" name="popup-status"
                        type="text" minLength="2" maxLength="200" autoComplete="off"
-                       placeholder="Введите стасус" required onChange={handleChangeDescription} value={description}/>
+                       placeholder="Введите стасус" required onChange={handleChangeDescription} value={description ?? ""}/>
                 <span className="error" id="popup-status-error"></span>
             </label>
         </PopupWithForm>

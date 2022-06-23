@@ -2,13 +2,15 @@
   max-width: 880px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 0;
+  padding: 45px 0 0 0;
   font-family: 'Inter', Arial, sans-serif;
 }
 
 @media (max-width: 905px)  {
   .page {
+    padding-top: 28px;
     max-width: 320px;
     margin: 28px auto 36px;
   }
 }
+

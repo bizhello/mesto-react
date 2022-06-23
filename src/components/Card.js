@@ -25,15 +25,16 @@ function Card(props) {
     }
 
     return(
-            <article className="element">
-                <button className={cardDeleteButtonClassName} type="button" onClick={handleDeleteClick}></button>
+            <article className="element" key={props.key}>
+                <button className={cardDeleteButtonClassName} type="button" onClick={handleDeleteClick} key={props.key}></button>
                 <img className="element__photo"
-                     src={props.link} alt={props.name} onClick={handleClick} />
+                     src={props.link} alt={props.name} onClick={handleClick} key={props.key}/>
                 <div className="element__under">
-                    <h2 className="element__title">{props.name}</h2>
+                    <h2 className="element__title" key={props.key}>{props.name}</h2>
                     <div className="element__under-column">
-                        <button className={isLiked ? cardLikeButtonClassNameActive : cardLikeButtonClassName} type="button" onClick={handleLikeClick}></button>
-                        <p className="element__number">{props.likes.length}</p>
+                        <button className={isLiked ? cardLikeButtonClassNameActive : cardLikeButtonClassName}
+                                type="button" onClick={handleLikeClick} key={props.key}></button>
+                        <p className="element__number" key={props.key}>{props.likes.length}</p>
                     </div>
                 </div>
             </article>

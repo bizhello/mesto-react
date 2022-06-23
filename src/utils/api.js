@@ -11,16 +11,14 @@ class Api {
     }
 
     getUserInfo() {
-        return fetch(this._url+'users/me', {
+        return fetch(`${this._url}users/me`, {
             method: 'GET',
             headers: this._headers
         })
-            .then(res => {
-                return this._getResponseData(res);
-            });
+            .then(this._getResponseData);
     }
     getInitialCards() {
-        return fetch(this._url+'cards', {
+        return fetch(`${this._url}cards`, {
             method: 'GET',
             headers: this._headers
         })
@@ -29,7 +27,7 @@ class Api {
             });
     }
     editUserInfo(name, status) {
-        return  fetch(this._url+'users/me', {
+        return  fetch(`${this._url}users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
@@ -42,7 +40,7 @@ class Api {
             });
     }
     createCard(name, link) {
-        return fetch(this._url+'cards', {
+        return fetch(`${this._url}cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
@@ -56,8 +54,8 @@ class Api {
             });
     }
     changeLikeCardStatus(cardId, isLiked) {
-        return fetch(this._url+`cards/${cardId}/likes`, {
-            method: isLiked ? 'PUT' : 'DELETE',
+        return fetch(`${this._url}cards/${cardId}/likes`, {
+                method: isLiked ? 'PUT' : 'DELETE',
             headers: this._headers
         })
             .then(res => {
@@ -65,7 +63,7 @@ class Api {
             });
     }
     deleteCard(cardId) {
-        return fetch(this._url+`cards/${cardId}`, {
+        return fetch(`${this._url}cards/${cardId}`, {
             method: 'DELETE',
             headers: this._headers
         })
@@ -74,7 +72,7 @@ class Api {
             });
     }
     changePhotoProfile(avatar) {
-        return fetch(this._url+'users/me/avatar', {
+        return fetch(`${this._url}users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,body: JSON.stringify({
                 avatar: `${avatar}`

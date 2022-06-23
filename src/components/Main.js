@@ -22,7 +22,10 @@ function Main(props) {
                 <button className="profile__button" type="button" onClick={props.onAddPlace}></button>
             </section>
             <section className="elements">
-                {props.cards.map((card) => (<Card card={card} likes={card.likes} name={card.name} link={card.link} id={card._id} owner={card.ownerId} onCardLike={props.handleCardLike} onCardDelete={props.handleCardDelete} onClick={props.onCardClick} key={card._id}/>))}
+                {props.cards.map((card) => (<Card card={card} likes={card.likes} name={card.name}
+                                                  link={card.link} id={card._id} owner={card.ownerId}
+                                                  onCardLike={props.handleCardLike} onCardDelete={props.handleCardDelete}
+                                                  onClick={props.onCardClick} key={card._id}/>))}
             </section>
         </main>
     );
