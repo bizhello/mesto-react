@@ -13,29 +13,29 @@ import {AddPlacePopup} from "./AddPlacePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  const [addPlace, setAddPlace] = useState(false);
-  const [editAvatar, setEditAvatar] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const emptyArr = [];
 
   const handleEditAvatarClick = () => {
-    setEditAvatar(true);
+    setIsEditAvatarPopupOpen(true);
   }
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true);
   }
   const handleAddPlaceClick = () => {
-    setAddPlace(true);
+    setIsAddPlacePopupOpen(true);
   }
   const handleCardClick = (src) => {
     setSelectedCard(src);
   }
   const closeAllPopups = () => {
-    setEditAvatar(false);
+    setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
-    setAddPlace(false);
+    setIsAddPlacePopupOpen(false);
     setSelectedCard(null);
   }
 
@@ -73,8 +73,8 @@ function App() {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
         api.changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
-            setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-            })
+                setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+                })
             .catch(err => {
                 console.log(err);
             });
@@ -90,15 +90,8 @@ function App() {
     }
     function createCard(name, link) {
         api.createCard(name, link)
-            .then(() => {
-                setCards([{
-                    link: link,
-                    name: name,
-                    card: undefined,
-                    likes: emptyArr,
-                    _id: undefined,
-                    ownerId: currentUser
-                }, ...cards]);
+            .then((res) => {
+                setCards([{ ...res, ownerId: res.owner._id }, ...cards]);
             })
             .catch(err => {
                 console.log(err);
@@ -109,16 +102,14 @@ function App() {
         const apiGetInitialCards = api.getInitialCards();
         const apiGetUserInfo = api.getUserInfo();
         Promise.all([apiGetInitialCards, apiGetUserInfo])
-            .then(values => {
-                setCurrentUser(values[1])
-                setCards(values[0].map((item) => ({
-                    card: item,
-                    link: item.link,
-                    name: item.name,
-                    likes: item.likes,
-                    _id: item._id,
-                    ownerId: item.owner._id
-                })))
+            .then(([cards, userInfo]) => {
+                setCards(
+                    cards.map((item) => ({
+                        ...item,
+                        ownerId: item.owner._id,
+                    }))
+                );
+                setCurrentUser(userInfo);
             })
             .catch(err => {
                 console.log(err);
@@ -135,8 +126,8 @@ function App() {
                 cards={cards} handleCardLike={handleCardLike} handleCardDelete={handleCardDelete}/>
           <Footer />
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
-          <EditAvatarPopup isOpen={editAvatar} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-          <AddPlacePopup addPlace={addPlace} onClose={closeAllPopups} createCard={createCard}/>
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+          <AddPlacePopup addPlace={isAddPlacePopupOpen} onClose={closeAllPopups} createCard={createCard}/>
 
           <PopupWithForm name={`delete-card`} title={`Вы уверены?`} onClose={closeAllPopups} buttonText='Да' />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
