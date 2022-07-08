@@ -8,4 +8,4 @@ README.md
 Разработан на React.
 
 Функционал: Открытие/закрытие попапов.
-Ссылка на гитхаб : https://github.com/bizhello/mesto-react
+https://bizhello.github.io/mesto-react/
